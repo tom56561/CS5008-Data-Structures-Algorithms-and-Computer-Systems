@@ -8,7 +8,11 @@
 #include <stdio.h>
 
 double power(double base, double n) {
-    return pow(base, n);
+    double res = base;
+    for (int i = 1; i < n; i++){
+        res *= base;
+    }
+    return res;
 }
 
 int main() {
