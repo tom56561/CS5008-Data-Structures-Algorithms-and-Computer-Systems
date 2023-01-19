@@ -1,13 +1,13 @@
 # Homework01
 This is the starting readme for this assignment.  Please edit the following information by removing the "*edit me*" with appropriate information your assignment:
 
-- Name: *edit me*
-- Title: *edit me*
-- How many hours did it take you to complete this assignment? *edit me*
-- Did you collaborate with any other students/TAs/Professors? *edit me*
+- Name: Po-Shen Lee (Eddie)
+- Title: HW1-Guess Number Game
+- How many hours did it take you to complete this assignment? 4 hours
+- Did you collaborate with any other students/TAs/Professors? Professor Scott
 - Did you use any external resources? (Cite them below)
-  - *edit me*
-  - *edit me and add more rows if needed*
+  - https://www.scaler.com/topics/number-guessing-game-c-project/
+  - https://stackoverflow.com/questions/29338206/error-for-loop-initial-declarations-are-only-allowed-in-c99-mode
 
 ## Logistics
 
@@ -37,6 +37,6 @@ each round.
 * Note: Don't forget to read the entire assignment on Canvas: the homework is not just this Guessing Game program!
 * Note: Your code **must** compile and run on the Khoury machines. Make sure you test your programs on these machines, as this is where we grade your assignments.
 * Note: You must commit any additional files(if any) into your repository so we can test your code.
-  * Points will be lost if you forget!
+* Points will be lost if you forget!
 
 
