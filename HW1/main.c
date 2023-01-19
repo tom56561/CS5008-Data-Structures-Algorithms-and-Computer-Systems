@@ -10,9 +10,9 @@ int main(){
     int answer = 0;
     int guess = 0;
     int guesses[] = {0, 0, 0, 0, 0};
+    int i;
 
-
-    for(int i = 0; i < 5; i++) {
+    for(i = 0; i < 5; i++) {
         answer = (rand() % 10) + 1;
         printf("============================\n");
         printf("CPU Says: Pick a number 1-10\n");
@@ -36,7 +36,7 @@ int main(){
     printf("|Here are the results of your guessing abilities|\n");
     printf("===============================================\n");
 
-    for(int i = 0; i < 5; i++) {
+    for(i = 0; i < 5; i++) {
         printf("Game %d took you %d guesses\n", i, guesses[i]);
     }
     
