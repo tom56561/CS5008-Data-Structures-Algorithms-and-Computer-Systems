@@ -5,20 +5,21 @@ information by removing the "*edit me*" and replace it with appropriate
 information your assignment. If it is asking you a question, please provide 
 a response.
 
-- Name: *edit me*
-- Title: *edit me*
-- How many hours did it take you to complete this assignment? *edit me*
+- Name: Po-Shen Lee
+- Title: HW2
+- How many hours did it take you to complete this assignment? 10 hours
 - Did you collaborate with any other students/TAs/Professors? If so, tell us 
   who and in what capacity.
   - *edit me (add more rows if needed)*
 - Did you use any external resources? (Cite them below)
   - https://www.youtube.com/watch?v=oyX30WVuEos&ab_channel=JacobSorber
   - https://www.techiedelight.com/circular-queue-implementation-c/
+  - https://www.scaler.com/topics/c/stack-using-linked-list-in-c/
 - (Optional) What was your favorite part of the assignment? 
   - *edit me*
 - (Optional) How would you improve the assignment? 
   - *edit me*
-
+  
 ## Logistics
 
 For this assignment (and every assignment/lab), you must login into the 
