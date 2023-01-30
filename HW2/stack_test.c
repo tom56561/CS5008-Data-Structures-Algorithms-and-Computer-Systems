@@ -192,6 +192,8 @@ int unitTest7(int status){
     }
        
     free_stack(test_s);
+    free_stack(test_s2);
+
 
     return passed;
 }
