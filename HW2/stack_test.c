@@ -144,6 +144,58 @@ int unitTest5(int status){
     return passed;
 }
 
+//Fill a stack, empty the stack, and fill the stack again.
+int unitTest6(int status){
+    int passed = 0;
+    
+    stack_t* test_s = create_stack(32);
+    int i =0;
+    for(i=0; i < 10; i++){
+       stack_enqueue(test_s,1);
+    }
+    while(stack_size(test_s) != 0){
+        stack_dequeue(test_s);
+    }
+    for(i=0; i < 16; i++){
+        stack_enqueue(test_s,1);
+    }
+
+    if(16==stack_size(test_s)){
+        passed =1;
+    }
+    
+    free_stack(test_s);
+
+    return passed;
+}
+
+//Create an empty stack and pop an item to add something to it.
+int unitTest7(int status){
+    int passed = 0;
+    int item;
+    stack_t* test_s = create_stack(1);
+    stack_t* test_s2 = create_stack(1);
+
+    stack_enqueue(test_s, 1);
+    item = stack_dequeue(test_s);
+    stack_enqueue(test_s2, item);
+
+    if(1==stack_full(test_s2)){
+        passed = 1;
+    }else{
+        passed = 0;
+    }
+    if(1 == stack_dequeue(test_s2)){
+        passed =1;
+    }else{
+        passed = 0;
+    }
+       
+    free_stack(test_s);
+
+    return passed;
+}
+
 
 // TODO: Add tests here
 int (*unitTests[])(int)={
@@ -152,6 +204,8 @@ int (*unitTests[])(int)={
     unitTest3,
     unitTest4,
     unitTest5,
+    unitTest6,
+    unitTest7,
     NULL
 };
 
@@ -163,7 +217,7 @@ int main(){
     // List of Unit Tests to test your data structure
     int counter =0;
     while(unitTests[counter]!=NULL){
-	    printf("========unitTest %d========\n",counter);
+	    printf("========unitTest %d========\n",counter+1);
         if(1==unitTests[counter](1)){
 		    printf("passed test\n");
     		testsPassed++;	
