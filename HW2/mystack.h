@@ -138,10 +138,8 @@ int stack_dequeue(stack_t* s){
 // This should be called before the proram terminates.
 void free_stack(stack_t* s){
 	// TODO: Implement me!
-	while(!stack_empty(s)){
-        node_t* temp = s->head;
-        s->head = temp->next;
-        free(temp);
+	while(stack_empty(s) != 1){
+		stack_dequeue(s);
     }
     free(s);
 }

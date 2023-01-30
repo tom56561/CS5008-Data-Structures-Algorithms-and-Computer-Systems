@@ -48,6 +48,7 @@ int unitTest2(int status){
     int passed = 0;
     
     stack_t* test_s = create_stack(MAX_DEPTH);
+
     stack_enqueue(test_s,1);
     stack_enqueue(test_s,2);
     stack_enqueue(test_s,3);
