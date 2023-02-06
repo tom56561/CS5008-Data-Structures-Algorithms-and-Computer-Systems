@@ -5,19 +5,19 @@ information by removing the "*edit me*" and replace it with appropriate
 information your assignment. If it is asking you a question, please provide 
 a response.
 
-- Name: *edit me*
+- Name: Po-Shen Lee
 
-- Title: *edit me*
+- Title: Lab03 -- Counting Assembly
 
-- How many hours did it take you to complete this assignment? 
+- How many hours did it take you to complete this assignment? 5 hours
 
 - Did you collaborate with any other students/TAs/Professors? If so, tell 
   us who and in what capacity.
   - *edit me (add more rows if needed)*
   
 - Did you use any external resources? (Cite them below)
-  - *edit me*
-  - *edit me and add more rows if needed*
+  - https://www.fresh2refresh.com/c-programming/c-strings/c-strupr-function/
+  - https://www.geeksforgeeks.org/toupper-function-in-c/
   
 - Use your tool to measure the  number of instructions that are require to 
   execute your implementation of the guessing game program that you 
@@ -26,13 +26,42 @@ a response.
   - When your program is compiled using the -O0 flag:
 
     ```
-    *edit me* by copying your results here
+    The purpose of using the -O0 flag is to provide an unoptimized version of the code for debugging purposes, as the generated code is easier to understand and debug than the optimized code. The -O0 option sets the optimization level to 0, which disables optimization for the compiled code.
+
+    gcc -S -O0 hw1.c
+    ./estimator hw1.s
+
+    ADD  5
+    SUB  2
+    DIV  1
+    MOV  49
+    LEA  14
+    PUSH  1
+    POP  1
+    RET  1
+
+    Total Instructions = 74
+    Total Cycles = 125
     ```
 
   - When your program is compiled using the -O3 flag:
 
     ```
-    *edit me* by copying your results here
+    gcc -S -O3 hw1.c
+    ./estimator hw1.s
+
+    ADD  11
+    SUB  7
+    MUL  5
+    MOV  59
+    LEA  53
+    PUSH  6
+    POP  6
+    RET  1
+
+    Total Instructions = 148
+    Total Cycles = 264
+
     ```
 
 - (Optional) What was your favorite part of the assignment? 
