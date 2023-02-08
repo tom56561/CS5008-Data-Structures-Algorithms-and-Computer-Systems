@@ -107,6 +107,158 @@ int unitTest5(int status){
     return passed;
 }
 
+// Fill a DLL, empty the DLL, fill the DLL, and empty the DLL again.
+int unitTest6(int status){
+    int passed = 0;
+    dll_t* test = create_dll();
+    int i;
+    for (i = 0; i < 10; i++){
+        dll_push_back(test,142);
+    }
+    if(10==dll_size(test)){
+       passed = 1;
+    }else{
+    	passed = 0;
+        return passed;
+    }
+    for(i = 0; i < 10; i++){
+        dll_pop_back(test);
+    }
+    if(0==dll_size(test)){
+       passed = 1;
+    }else{
+    	passed = 0;
+        return passed;
+    }
+    for (i = 0; i < 10; i++){
+        dll_push_front(test,142);
+    }
+    if(10==dll_size(test)){
+       passed = 1;
+    }else{
+    	passed = 0;
+        return passed;
+    }
+    for(i = 0; i < 10; i++){
+        dll_pop_front(test);
+    }
+    if(0==dll_size(test)){
+       passed = 1;
+    }else{
+    	passed = 0;
+        return passed;
+    }
+    free_dll(test);
+
+    return passed;
+}
+
+// Test each function in your DLL when the DLL is not empty.
+int unitTest7(int status){
+    int passed = 0;
+    dll_t* test = create_dll();
+    dll_push_front(test,1);
+    if(dll_empty(test) == 0){
+    	passed = 1;
+    }else{
+        passed = 0;
+        return passed;
+    }
+    dll_push_back(test,2);
+    if(dll_size(test) == 2){
+        passed = 1;
+    } else{
+        passed = 0;
+        return passed;
+    }
+
+    if(dll_pop_front(test) == 1){
+        passed = 1;
+    } else{
+        passed = 0;
+        return passed;
+    }
+
+    if(dll_pop_back(test) == 2){
+        passed = 1;
+    } else{
+        passed = 0;
+        return passed;
+    }
+
+    dll_push_front(test,1);
+
+    dll_insert(test, 1, 3);
+    if(dll_get(test, 1) == 3){
+        passed = 1;
+    } else{
+        passed = 0;
+        return passed;
+    }
+    dll_remove(test, 1);
+    if(dll_size(test) == 1){
+        passed = 1;
+    } else {
+        passed = 0;
+        return passed;
+    }
+
+    free_dll(test);
+
+    return passed;
+}
+
+// Test each function in your DLL when the DLL is empty.
+int unitTest8(int status){
+    int passed = 0;
+    dll_t* test = create_dll();
+    if(dll_pop_front(test) == 0){
+        passed = 1;
+    } else {
+        passed = 0;
+        return passed;
+    }
+    if(dll_pop_back(test) == 0){
+        passed = 1;
+    } else {
+        passed = 0;
+        return passed;
+    }
+
+    if(dll_insert(test, 0, 5) == 1){
+        passed = 1;
+    } else {
+        passed = 0;
+        return passed;
+    }
+    dll_pop_back(test);
+
+    if(dll_get(test, 0) == 0){
+        passed = 1;
+    } else {
+        passed = 0;
+        return passed;
+    }
+
+    if(dll_remove(test, 0) == 0){
+        passed = 1;
+    } else {
+        passed = 0;
+        return passed;
+    }
+
+    if(dll_size(test) == 0){
+        passed = 1;
+    } else {
+        passed = 0;
+        return passed;
+    }
+
+    free_dll(test);
+
+    return passed;
+}
+
 // An array of function pointers to all of the tests
 // that main() can use iterate over them.
 int (*unitTests[])(int)={
@@ -115,6 +267,9 @@ int (*unitTests[])(int)={
     unitTest3,
     unitTest4,
     unitTest5,
+    unitTest6,
+    unitTest7,
+    unitTest8,
     NULL
 };
 
