@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <time.h> // Time functions 
 
-#define EXPERIMENT 0 // we will use this for Part 4 of this lab
+#define EXPERIMENT 1 // we will use this for Part 4 of this lab
 
 // =============== Helper Functions ===============
 // Name:    compare

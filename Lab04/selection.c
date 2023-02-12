@@ -5,7 +5,7 @@
 #include <stdlib.h> // so we can use atoi()
 #include <time.h>   // so we can use time_t and clock_gettime()
 
-#define EXPERIMENT 0 // we will use this for Part 4 of this lab
+#define EXPERIMENT 1 // we will use this for Part 4 of this lab
 
 // =============== Helper Functions ===============
 // Swaps two numbers in an array
