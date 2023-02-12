@@ -5,24 +5,22 @@ information by removing the "*edit me*" and replace it with appropriate
 information your assignment. If it is asking you a question, please provide 
 a response.
 
-- Name: *edit me*
+- Name: Po-Shen Lee
 
-- Description: *edit me*
+- Description: Lab04-Sorting
 
-- How many hours did it take you to complete this assignment? *edit me*
+- How many hours did it take you to complete this assignment? 3 hours
 
 - Did you collaborate with any other students/TAs/Professors? If so, tell 
   us who and in what capacity.
   - *edit me (add more rows if needed)*
 
 - Did you use any external resources? (Cite them below)
-  - *edit me*
-  - *edit me and add more rows if needed*
+  - https://totoroliu.medium.com/%E6%8E%92%E5%BA%8F%E6%BC%94%E7%AE%97%E6%B3%95-sorting-algorithm-dfd8af673f3a
 
 - Shareable link to experiment data: *edit me*
 
-- (Optional) What was your favorite part of the assignment? 
-
+- (Optional) What was your favorite part of the assignment?
   - *edit me*
 
 - (Optional) How would you improve the assignment? 

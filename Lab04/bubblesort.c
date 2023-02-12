@@ -13,6 +13,9 @@
 // Input: The 'address of' an index into an array for positions in an array.
 void swap(int* a, int* b){
     // TODO: Swap two integers in an array.
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 // Name:    printIntArray
@@ -97,7 +100,8 @@ int main(int argc, char* argv[]){
   int* random = (int*)malloc(sizeof(int)*size);
 
   // Populate our test data set
-  for(int i = 0 ; i < size ; i++) {
+  int i;
+  for(i = 0 ; i < size ; i++) {
     // Generate random values from 0 to 99
     random[i] = rand()%size; 
   }
