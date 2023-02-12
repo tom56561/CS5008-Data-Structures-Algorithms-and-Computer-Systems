@@ -320,14 +320,17 @@ void free_dll(dll_t* t)
 {
 	// TODO: Implement me!!
 	if (t != NULL) {
-		node_t* temp = t->head;
-		node_t* next = NULL;
-		while (temp != NULL) {
-			next = temp->next;
-			free(temp);
-			temp = next;
-		}
+		return;
 	}
+	node_t* temp = t->head;
+	node_t* next = NULL;
+	while (temp != NULL) {
+		next = temp->next;
+		free(temp);
+		temp = next;
+	}
+	t->head = NULL;
+	t->tail = NULL;
 	free(t);
 }
 
