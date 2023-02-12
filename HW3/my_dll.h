@@ -319,15 +319,14 @@ int dll_size(dll_t* t)
 void free_dll(dll_t* t)
 {
 	// TODO: Implement me!!
-	if (t == NULL) {
-		return;
-	}
-	node_t* temp = t->head;
-	node_t* next = NULL;
-	while (temp != NULL) {
-		next = temp->next;
-		free(temp);
-		temp = next;
+	if (t != NULL) {
+		node_t* temp = t->head;
+		node_t* next = NULL;
+		while (temp != NULL) {
+			next = temp->next;
+			free(temp);
+			temp = next;
+		}
 	}
 	free(t);
 }
