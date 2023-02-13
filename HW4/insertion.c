@@ -12,6 +12,9 @@
 // Input: The 'address of' an index into an array for positions in an array.
 void swap(int* a, int* b){
     // TODO: Swap two integers in an array.
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 // Input: A pointer to an array (i.e. the array itself points to the first index)
@@ -35,7 +38,22 @@ void printIntArray(int* array, unsigned int size){
 //  - 'size' tells us how big the array of data is we are sorting.
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void sortIntegers(int* array, unsigned int size){
-    // TODO: Implement insertion sort
+  // TODO: Implement insertion sort
+  int i, key, j;
+  for (i = 1; i < size; i++) {
+    key = array[i];
+    j = i - 1;
+
+    // Compare key with each element on the left of it until an element smaller than
+    // it is found.
+    // For descending order, change key<array[j] to key>array[j].
+    while (key < array[j] && j >= 0) {
+      array[j + 1] = array[j];
+      j--;
+    }
+    array[j + 1] = key;
+  }
+
 }
 
 
