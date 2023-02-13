@@ -80,7 +80,8 @@ int main(int argc, char* argv[]){
   int* random = (int*)malloc(sizeof(int)*size);
 
   // Populate our test data set
-  for(int i = 0 ; i < size ; i++) {
+  int i;
+  for(i = 0 ; i < size ; i++) {
     // Generate random values from 0 to 99
     random[i] = rand()%size; 
   }
