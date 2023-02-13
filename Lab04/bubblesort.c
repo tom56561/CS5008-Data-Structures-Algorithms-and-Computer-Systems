@@ -45,14 +45,16 @@ void printIntArray(int* array, unsigned int size){
 // Output:   No value is returned, but 'array' should 
 //           be modified to store a sorted array of size.
 void bubblesort(int* array, unsigned int size){
-    for(int i=0; i < size-1; i++){
-        for(int j=0; j < size-i-1; j++){
-            // Compare adjacent items
-            if(array[j] > array[j+1]){
-                swap(&array[j],&array[j+1]);
-            }
-        }
-    }
+  int i;
+  int j;
+  for(i=0; i < size-1; i++){
+      for(j=0; j < size-i-1; j++){
+          // Compare adjacent items
+          if(array[j] > array[j+1]){
+              swap(&array[j],&array[j+1]);
+          }
+      }
+  }
 }
 
 
