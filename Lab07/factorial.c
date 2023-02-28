@@ -6,10 +6,10 @@
 
 #include <stdio.h>
 
-int factorial(int n){
+unsigned long long int factorial(unsigned long long int n){
   // TODO: Implement iterative solution here
-  int i;
-  int sum = 1;
+  unsigned long long int i;
+  unsigned long long int sum = 1;
   for (i = 1; i <= n; i++){
     sum *= i;
   }
@@ -17,7 +17,7 @@ int factorial(int n){
   return sum;
 };
 
-int factorial_rec(int n){
+unsigned long long int factorial_rec(unsigned long long int n){
   // TODO: Implement recursive solution here
   if(n == 1 || n == 0){
     return 1;
@@ -28,8 +28,9 @@ int factorial_rec(int n){
 int main(){
 
   // Both of these should print the same result!
-  printf("factorial(10) = %d\n",factorial(10));
-  printf("factorial_rec(10) = %d\n",factorial_rec(10));
+  
+  printf("factorial(10) = %llu\n",factorial(10));
+  printf("factorial_rec(10) = %llu\n",factorial_rec(10));
 
 
   return 0;
