@@ -25,7 +25,22 @@ typedef struct TreeNode{
 void dfs(TreeNode_t* start){
     // TODO: Hmm, how can I look through both branches of the node?
     // TODO: Hmm, when do I stop?
-    //
+    if(start == NULL){
+      return;
+    }
+    printf("%c ", start->data);
+    dfs(start->left);
+    dfs(start->right);
+}
+
+//Free Tree
+void freeTree(TreeNode_t* start) {
+    if (start == NULL) {
+        return;
+    }
+    freeTree(start->left);
+    freeTree(start->right);
+    free(start);
 }
 
 int main(){
@@ -88,6 +103,8 @@ int main(){
   // TODO: Write a helper function to free all the nodes
   // Think carefully of the order that nodes should be freed.
   // Use valgrind to make sure that you were successful!
+  freeTree(start);
+
   return 0;
 }
 
