@@ -8,14 +8,21 @@
 
 int factorial(int n){
   // TODO: Implement iterative solution here
+  int i;
+  int sum = 1;
+  for (i = 1; i <= n; i++){
+    sum *= i;
+  }
 
-  return 0;
+  return sum;
 };
 
 int factorial_rec(int n){
   // TODO: Implement recursive solution here
-
-  return 0;
+  if(n == 1 || n == 0){
+    return 1;
+  }
+  return n * factorial_rec(n-1);
 }
 
 int main(){
