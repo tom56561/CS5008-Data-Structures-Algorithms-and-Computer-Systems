@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define EXPERIMENT 0 // use this for the experimentation in this lab
+#define EXPERIMENT 1 // use this for the experimentation in this lab
 
 // =============== Helper Functions ===============
 
