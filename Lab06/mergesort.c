@@ -13,11 +13,46 @@
 // First subarray is arr[l..m] 
 // Second subarray is arr[m+1..r] 
 void merge(int arr[], int temp[], int l, int m, int r) {
-  //TODO: implement merge.
+  int i, j, k;
+  i = l;
+  j = m+1;
+  k = 0;
+  while(i <= m && j <= r){
+    if(arr[i] < arr[j]){
+      temp[k] = arr[i];
+      i++;
+    }
+    else{
+      temp[k] = arr[j];
+      j++;
+    }
+    k++;
+  }
+  while(i <= m){
+    temp[k] = arr[i];
+    i++;
+    k++;
+  }
+  while(j <= r){
+    temp[k] = arr[j];
+    j++;
+    k++;
+  }
+  for(i = 0; i < k; i++){
+    arr[l+i] = temp[i];
+  }
 }
 
 // TODO: Implement your mergeSort function here
-
+// Recursive function to sort an array of integers
+void mergeSort(int arr[], int temp[], int l, int r) {
+  if(l < r) {
+    int m = (l+r)/2;
+    mergeSort(arr, temp, l, m);
+    mergeSort(arr, temp, m+1, r);
+    merge(arr, temp, l, m, r);
+  }
+}
 
 
 
@@ -31,7 +66,8 @@ void merge(int arr[], int temp[], int l, int m, int r) {
 //          (2) 'size' tells us how big the array of data is we are sorting.
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void sortIntegers(int* array, unsigned int size){
-    // TODO: make a call to your mergeSort function here
+    int temp[size];
+    mergeSort(array, temp, 0, size-1);
 }
 
 
