@@ -6,7 +6,19 @@
 
 // =============== Helper Functions ===============
 // TODO: Implement your helper functions here
-
+int countReversePairs(int* array, unsigned int size){
+  int count = 0;
+  int i;
+  int j;
+  for(i=0; i<size-1; i++){
+    for(j=i+1; j<size; j++){
+      if(array[i] > array[j]){
+        count++;
+      }
+    }
+  }
+  return count;
+}
 
 
 
@@ -20,6 +32,8 @@
 // Output: The mixedupness score of the original array
 int mixedupness(int* array, unsigned int size){
   // TODO: Implement me!!
+  int reversePairsCount = countReversePairs(array, size);
+  return reversePairsCount;
   return 0;
 }
 
@@ -37,7 +51,7 @@ void printIntArray(int* array, unsigned int size){
 int main(){
   // Some test data sets.
   int dataset1[] = {0,1,2,3,4,5,6,7,8,9,10};
-  int dataset2[] = {100,87,65,10,54,42,27,37}
+  int dataset2[] = {100,87,65,10,54,42,27,37};
   int dataset3[] = {0,3,2,1,4,7,6,5,8,9,10};
   int dataset4[] = {10,9,8,7,6,5,4,3,2,1,0};
   int dataset5[] = {100,201,52,3223,24,55,623,75,8523,-9,150};
