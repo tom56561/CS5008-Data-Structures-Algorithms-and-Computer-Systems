@@ -17,7 +17,7 @@ int merge(int arr[], int temp[], int left, int mid, int right) {
     while (i <= mid - 1 && j <= right) {
         if (arr[i] <= arr[j]) {
             temp[k++] = arr[i++];
-        } else {
+        } else { 
             temp[k++] = arr[j++];
             inv_count += mid - i;
         }
@@ -104,11 +104,11 @@ int main(){
   // TODO: Change these so that they print 
   // both the expected score and the calculated score
   printf("dataset 1 expected = %d, actual = %d\n", 0, mixedupness(dataset1, 11));
-  printf("dataset 2 actual = %d\n", mixedupness(dataset2, 8));
-  printf("dataset 3 actual = %d\n", mixedupness(dataset3, 11));
-  printf("dataset 4 actual = %d\n", mixedupness(dataset4, 11));
-  printf("dataset 5 actual = %d\n", mixedupness(dataset5, 11));
-  printf("dataset 6 actual = %d\n", mixedupness(dataset6, 11));
+  printf("dataset 2 expected = %d, actual = %d\n", 23, mixedupness(dataset2, 8));
+  printf("dataset 3 expected = %d, actual = %d\n", 6, mixedupness(dataset3, 11));
+  printf("dataset 4 expected = %d, actual = %d\n", 55, mixedupness(dataset4, 11));
+  printf("dataset 5 expected = %d, actual = %d\n", 27, mixedupness(dataset5, 11));
+  printf("dataset 6 expected = %d, actual = %d\n", 18, mixedupness(dataset6, 11));
   
   return 0;
 }
