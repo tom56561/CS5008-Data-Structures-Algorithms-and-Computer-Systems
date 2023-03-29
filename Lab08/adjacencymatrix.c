@@ -1,5 +1,5 @@
-// Your Name Here
-// Date
+// Name: Po-Shen Lee
+// Date: Mar 29
 //
 // Compile : gcc -Wall adjacencymatrix.c -o adjacencymatrix 
 //           ^ Note: You may get a few warnings for passing pointers around, 
