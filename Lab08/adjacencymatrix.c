@@ -99,24 +99,31 @@ void printGraph(int* g){
 // For a given node 'n' in an adjacency matrix,
 // compute the in-degree.
 int nodeInDegree(int* g, int node){
-    // TODO
-    return 999999;
+    int in_degree = 0;
+    int i;
+    for(i = 0; i < ROWS; i++){
+        in_degree += g[i * COLUMNS + node];
+    }
+    return in_degree;
 }
 
 // Compute 'out-degree' of a node
 // For a given node 'n' in an adjacency matrix,
 // compute the out-degree.
 int nodeOutDegree(int* g, int node){
-    // TODO
-    return 999999;
+    int out_degree = 0;
+    int i;
+    for(i = 0; i < COLUMNS; i++){
+        out_degree += g[node * COLUMNS + i];
+    }
+    return out_degree;
 }
 
 
 // Figure out if two nodes are connected
 // Returns a 1 if node1 is connected to node 2
 int isConnected(int* g, int node1, int node2){
-    // TODO
-    return 0;
+    return g[node1 * COLUMNS + node2];
 }
 
 int main(){
