@@ -1,5 +1,5 @@
-// Your Name Here
-// Date
+// Name: Po-Shen Lee
+// Date: Mar 29
 //
 // Compile this assignment with: gcc -Wall bst_tests.c -o tests
 //
@@ -66,12 +66,63 @@ int unitTest3(){
     return 0;
 }
 
+// Fill a BST with values 1-100 and searching for nodes
+int unitTest4(){
+    int result = 1;
+    bst_t * testBST = bst_create();
+    
+    for(int i = 1; i <= 100; i++) {
+        bst_add(testBST, i);
+    }
+
+    for(int i = 1; i <= 100; i++) {
+        if(!bst_find(testBST, i)) {
+            result = 0;
+            break;
+        }
+    }
+
+    bst_free(testBST);    
+    return result;
+}
+
+// Add 100 nodes and then check that the size is 100
+int unitTest5(){
+    bst_t * testBST = bst_create();
+
+    for(int i = 1; i <= 100; i++) {
+        bst_add(testBST, i);
+    }
+
+    int result = (bst_size(testBST) == 100) ? 1 : 0;
+
+    bst_free(testBST);   
+    return result;
+}
+
+// Add 100 nodes with the value of '2' and check that the sum is 200.
+int unitTest6(){
+    bst_t * testBST = bst_create();
+
+    for(int i = 0; i < 100; i++) {
+        bst_add(testBST, 2);
+    }
+
+    int result = (bst_sum(testBST) == 200) ? 1 : 0;
+
+    bst_free(testBST);   
+    return result;
+}
+
 
 // TODO: Add more tests here at your discretion
 int (*unitTests[])(int) = {
     unitTest1,
     unitTest2,
     unitTest3,
+    unitTest4,
+    unitTest5,
+    unitTest6,
     NULL
 };
 

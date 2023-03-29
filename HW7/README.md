@@ -5,11 +5,11 @@ information by removing the "*edit me*" and replace it with appropriate
 information your assignment. If it is asking you a question, please provide 
 a response.
 
-- Name: *edit me with your name*
+- Name: Po-Shen Lee
 
-- Description: *edit me with a description of the assignment*
+- Description: Homework 7
 
-- How many hours did it take you to complete this assignment? *edit me*
+- How many hours did it take you to complete this assignment? 6 hours
 
 - Did you collaborate with any other students/TAs/Professors? If so, tell 
   us who and in what capacity.
