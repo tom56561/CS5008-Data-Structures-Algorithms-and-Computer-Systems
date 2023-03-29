@@ -5,11 +5,31 @@ information by removing the "*edit me*" and replace it with appropriate
 information your assignment. If it is asking you a question, please provide 
 a response.
 
-- Name: *edit me*
+- Name: Po-Shen Lee
 
-- Description: *edit me*
+- Description: Lab08
 
-- How many hours did it take you to complete this assignment? *edit me*
+- How many hours did it take you to complete this assignment? 5 hours
+
+- The result of running tsort:
+
+-bash-4.2$ tsort topo1.txt
+3
+5
+7
+11
+8
+2
+10
+9
+-bash-4.2$ tsort topo2.txt
+dance
+drink
+jump
+run
+eat
+swim
+exercise 
 
 - Did you collaborate with any other students/TAs/Professors? If so, tell 
   us who and in what capacity.
