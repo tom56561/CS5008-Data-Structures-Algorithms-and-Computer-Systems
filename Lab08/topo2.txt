@@ -1,2 +1,10 @@
 eat sleep
 eat exercise
+eat play
+exercise sleep
+play sleep
+swim play
+jump swim
+run swim
+drink eat
+dance exercise
