@@ -69,13 +69,14 @@ int unitTest3(){
 // Fill a BST with values 1-100 and searching for nodes
 int unitTest4(){
     int result = 1;
+    int i;
     bst_t * testBST = bst_create();
     
-    for(int i = 1; i <= 100; i++) {
+    for(i = 1; i <= 100; i++) {
         bst_add(testBST, i);
     }
 
-    for(int i = 1; i <= 100; i++) {
+    for(i = 1; i <= 100; i++) {
         if(!bst_find(testBST, i)) {
             result = 0;
             break;
@@ -88,9 +89,10 @@ int unitTest4(){
 
 // Add 100 nodes and then check that the size is 100
 int unitTest5(){
+    int i;
     bst_t * testBST = bst_create();
 
-    for(int i = 1; i <= 100; i++) {
+    for(i = 1; i <= 100; i++) {
         bst_add(testBST, i);
     }
 
@@ -102,9 +104,10 @@ int unitTest5(){
 
 // Add 100 nodes with the value of '2' and check that the sum is 200.
 int unitTest6(){
+    int i;
     bst_t * testBST = bst_create();
 
-    for(int i = 0; i < 100; i++) {
+    for(i = 0; i < 100; i++) {
         bst_add(testBST, 2);
     }
 
