@@ -1,5 +1,5 @@
-// Your Name Here
-// Date
+// Po-Shen Lee
+// Apr 3
 //
 // Compile this assignment with: gcc -Wall main.c -o main
 //
