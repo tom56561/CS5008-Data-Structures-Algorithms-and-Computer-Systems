@@ -267,9 +267,9 @@ int graph_num_edges(graph_t* g){
 void free_graph(graph_t* g){
     // Make sure g is not NULL
     if (g == NULL) return;
-
+    int i;
     // Free all the in and out neighbor DLLs of each graph node
-    for (int i = 0; i < g->numNodes; i++) {
+    for (i = 0; i < g->numNodes; i++) {
         graph_node_t* node = (graph_node_t*)(dll_get(g->nodes, i));
         if (node->inNeighbors != NULL) free_dll(node->inNeighbors);
         if (node->outNeighbors != NULL) free_dll(node->outNeighbors);

@@ -47,9 +47,6 @@ int main(int argc, const char * argv[]) {
     assert(graph_add_edge(graph, 1, 2) == 1);
     assert(graph_add_edge(graph, 2, 0) == 1);
 
-    //Test adding duplicate edge
-    // assert(graph_add_edge(graph, 0, 1) == 1);
-
     // Test removing a node
     // assert(graph_remove_node(graph, 1) == 1);
     assert(graph_num_nodes(graph) == 3);
