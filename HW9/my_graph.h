@@ -23,6 +23,7 @@ typedef struct graph{
 
 typedef struct graph_node{
     int data;
+    int visited;
     dll_t* inNeighbors;
     dll_t* outNeighbors;
 } graph_node_t;
@@ -65,6 +66,7 @@ graph_node_t * create_graph_node(int value){
     if ( graph_node == NULL ) return NULL;
     
     graph_node->data = value;
+     graph_node->visited = 0;
     graph_node->inNeighbors = create_dll();
     graph_node->outNeighbors = create_dll();
     
@@ -260,20 +262,117 @@ int graph_num_edges(graph_t* g){
     return g->numEdges;
 }
 
+// Helper function to reset visited flags of all nodes to 0
+void reset_visited(graph_t *g) {
+    node_t* current = g->nodes->head;
+    while (current != NULL) {
+        graph_node_t* node = (graph_node_t*) current->data;
+        node->visited = 0;
+        current = current->next;
+    }
+}
+
+// Helper function for DFS traversal
+int dfs(graph_node_t* node, int dest) {
+    if (node->data == dest) {
+        return 1;
+    }
+
+    node->visited = 1;
+    node_t* current = node->outNeighbors->head;
+    while (current != NULL) {
+        graph_node_t* outNode = (graph_node_t*) current->data;
+        if (!outNode->visited) {
+            if (dfs(outNode, dest)) {
+                return 1;
+            }
+        }
+        current = current->next;
+    }
+
+    return 0;
+}
+
+// Helper function for detecting cycles using DFS
+int dfs_cycle(graph_node_t* node) {
+    node->visited = 1;
+    node_t* current = node->outNeighbors->head;
+    while (current != NULL) {
+        graph_node_t* outNode = (graph_node_t*) current->data;
+        if (!outNode->visited) {
+            if (dfs_cycle(outNode)) {
+                return 1;
+            }
+        } else {
+            return 1;
+        }
+        current = current->next;
+    }
+
+    node->visited = 0;
+    return 0;
+}
+
 // returns 1 if we can reach the destination from source
 // returns 0 if it is not reachable
 // returns -1 if the graph is NULL (using BFS)
 int graph_is_reachable(graph_t * g, int source, int dest){
+    if (g == NULL) return -1;
 
+    graph_node_t* src_node = find_node(g, source);
+    if (src_node == NULL) return 0;
+
+    reset_visited_flags(g);
+    return dfs(src_node, dest);
 }
+
 
 // returns 1 if there is a cycle in the graph
 // returns 0 if no cycles exist in the graph
 // returns -1 if the graph is NULL 
 // You may use either BFS or DFS to complete this task.
 int graph_has_cycle(graph_t * g){
+    if (g == NULL) return -1;
 
+    reset_visited_flags(g);
+    node_t* current = g->nodes->head;
+    while (current != NULL) {
+        graph_node_t* node = (graph_node_t*) current->data;
+        if (!node->visited) {
+            if (dfs_cycle(node)) {
+                return 1;
+            }
+        }
+        current = current->next;
+    }
+
+    return 0;
 }
+
+
+// Helper function for DFS traversal to print path
+int dfs_print_path(graph_node_t* node, int dest) {
+    if (node->data == dest) {
+        printf("%d", node->data);
+        return 1;
+    }
+
+    node->visited = 1;
+    node_t* current = node->outNeighbors->head;
+    while (current != NULL) {
+        graph_node_t* outNode = (graph_node_t*) current->data;
+        if (!outNode->visited) {
+            if (dfs_print_path(outNode, dest)) {
+                printf(" <- %d", node->data);
+                return 1;
+            }
+        }
+        current = current->next;
+    }
+
+    return 0;
+}
+
 
 // prints any path from source to destination if there 
 // exists a path from the source to the destination.
@@ -285,7 +384,18 @@ int graph_has_cycle(graph_t * g){
 // Returns 0 if there is not a path from a source to destination
 // Returns -1 if the graph is NULL
 int graph_print_path(graph_t * g, int source, int dest){
+    if (g == NULL) return -1;
 
+    graph_node_t* src_node = find_node(g, source);
+    if (src_node == NULL) return 0;
+
+    reset_visited(g);
+    if (dfs_print_path(src_node, dest)) {
+        printf("\n");
+        return 1;
+    }
+    
+    return 0;
 }
 
 // Free graph
