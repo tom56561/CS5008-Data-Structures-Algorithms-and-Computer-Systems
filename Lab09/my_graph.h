@@ -144,19 +144,21 @@ int graph_remove_node(graph_t* g, int value){
 int graph_add_edge(graph_t * g, int source, int destination){
     if (g == NULL) return -1;
 
-    // Check if the source and destination nodes exist in the graph
-    if (source < 0 || source >= g->numNodes || destination < 0 || destination >= g->numNodes) return 0;
+    graph_node_t* src_node = find_node(g, source);
+    graph_node_t* dest_node = find_node(g, destination);
+
+    if (src_node == NULL || dest_node == NULL) return 0;
 
     // Check if the edge already exists
-    dll_t* outNeighbors = ((graph_node_t*)(dll_get(g->nodes, source)))->outNeighbors;
-    if (dll_get(outNeighbors, destination) != NULL) return 0;
+    dll_t* outNeighbors = src_node->outNeighbors;
+    if (dll_get_index(outNeighbors, dest_node) != -1) return 0;
 
     // Add destination to the out neighbors of source
-    if (dll_push_back(outNeighbors, &(g->nodes[destination])) == 0) return 0;
+    if (dll_push_back(outNeighbors, dest_node) == 0) return 0;
 
     // Add source to the in neighbors of destination
-    dll_t* inNeighbors = ((graph_node_t*)(dll_get(g->nodes, destination)))->inNeighbors;
-    if (dll_push_back(inNeighbors, &(g->nodes[source])) == 0) {
+    dll_t* inNeighbors = dest_node->inNeighbors;
+    if (dll_push_back(inNeighbors, src_node) == 0) {
         // If adding to the in neighbors failed, remove the added out neighbor from source
         dll_remove(outNeighbors, dll_size(outNeighbors) - 1);
         return 0;
@@ -322,7 +324,7 @@ int graph_is_reachable(graph_t * g, int source, int dest){
     graph_node_t* src_node = find_node(g, source);
     if (src_node == NULL) return 0;
 
-    reset_visited_flags(g);
+    reset_visited(g);
     return dfs(src_node, dest);
 }
 
@@ -334,7 +336,7 @@ int graph_is_reachable(graph_t * g, int source, int dest){
 int graph_has_cycle(graph_t * g){
     if (g == NULL) return -1;
 
-    reset_visited_flags(g);
+    reset_visited(g);
     node_t* current = g->nodes->head;
     while (current != NULL) {
         graph_node_t* node = (graph_node_t*) current->data;
@@ -359,18 +361,20 @@ int dfs_print_path(graph_node_t* node, int dest) {
 
     node->visited = 1;
     node_t* current = node->outNeighbors->head;
+    int found = 0;
     while (current != NULL) {
         graph_node_t* outNode = (graph_node_t*) current->data;
         if (!outNode->visited) {
-            if (dfs_print_path(outNode, dest)) {
+            found = dfs_print_path(outNode, dest);
+            if (found) {
                 printf(" <- %d", node->data);
-                return 1;
+                break;
             }
         }
         current = current->next;
     }
 
-    return 0;
+    return found;
 }
 
 
