@@ -13,6 +13,7 @@
 
 #include "my_dll.h"
 #include "string.h"
+#include <limits.h> 
 
 typedef struct graph_edge {
     int weight;
@@ -80,5 +81,6 @@ void graph_free(graph_t *graph) {
     }
     free_dll(graph->nodes);
     free(graph);
+}
 
 #endif // MY_GRAPH_H

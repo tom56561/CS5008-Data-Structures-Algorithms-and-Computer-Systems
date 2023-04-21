@@ -1,10 +1,9 @@
 #ifndef MY_PQ_H
 #define MY_PQ_H
 
-#include "my_dll.h"
 #include "my_graph.h"
+#include "my_dll.h"
 #include <limits.h>
-
 
 typedef struct pq {
     dll_t *list;
