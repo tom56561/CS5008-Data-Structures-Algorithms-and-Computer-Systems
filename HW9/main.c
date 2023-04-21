@@ -59,35 +59,16 @@ void calculate_shortest(graph_t *graph, const char *source_city_name) {
 }
 
 typedef struct City {
-    const char *name;
-    int index;
+    char name[20];
 } City;
 
+int compare_cities(const void *a, const void *b) {
+    const City *city1 = (const City *)a;
+    const City *city2 = (const City *)b;
+    return strcmp(city1->name, city2->name);
+}
+
 int main() {
-
-
-	//List of cities
-	struct City cities[] = {
-		{"Lisbon", 1},
-		{"Madrid", 2},
-		{"Naples", 3},
-		{"Rome", 4},
-		{"Hamburg", 5},
-		{"Copenhagen", 6},
-		{"Berlin", 7},
-		{"Warsaw", 8},
-		{"Amsterdam", 9},
-		{"Brussels", 10},
-		{"Prague", 11},
-		{"Vienna", 12},
-		{"Budapest", 13},
-		{"Belgrade", 14},
-		{"Trieste", 15},
-		{"Munich", 16},
-		{"Genoa", 17},
-		{"Paris", 18},
-		{"Bern", 19}
-	};
 
 	// Read data from datafile city.dat
     FILE *file = fopen("city.dat", "r");
@@ -96,16 +77,50 @@ int main() {
         return EXIT_FAILURE;
     }
 
-	
+	// Read city names from the file and store them in a dynamic array
+    City *cities = NULL;
+    int num_cities = 0;
+    char city_name1[20], city_name2[20];
+    int weight;
+    while (fscanf(file, "%19s %19s %d", city_name1, city_name2, &weight) == 3) {
+        bool city1_found = false, city2_found = false;
+        for (int i = 0; i < num_cities; i++) {
+            if (strcmp(city_name1, cities[i].name) == 0) {
+                city1_found = true;
+            }
+            if (strcmp(city_name2, cities[i].name) == 0) {
+                city2_found = true;
+            }
+            if (city1_found && city2_found) {
+                break;
+            }
+        }
+        if (!city1_found) {
+            num_cities++;
+            cities = realloc(cities, num_cities * sizeof(City));
+            strcpy(cities[num_cities - 1].name, city_name1);
+        }
+        if (!city2_found) {
+            num_cities++;
+            cities = realloc(cities, num_cities * sizeof(City));
+            strcpy(cities[num_cities - 1].name, city_name2);
+        }
+    }
+
+	// Sort the cities
+    qsort(cities, num_cities, sizeof(City), compare_cities);
+
 
     // Create a graph and read the data from the file
     graph_t *graph = graph_create();
-    for (int i = 0; i < sizeof(cities) / sizeof(cities[0]); i++) {
+    for (int i = 0; i < num_cities; i++) {
         graph_add_node(graph, cities[i].name);
     }
 
-    char city_name1[20], city_name2[20];
-    int weight;
+	// Rewind the file to the beginning
+    fseek(file, 0, SEEK_SET);
+
+    // Read edges from the file and add them to the graph
     while (fscanf(file, "%19s %19s %d", city_name1, city_name2, &weight) == 3) {
         graph_add_edge(graph, city_name1, city_name2, weight);
         graph_add_edge(graph, city_name2, city_name1, weight);
@@ -113,11 +128,12 @@ int main() {
 
     fclose(file);
 
+
     while (true) {
         // Display the list of cities
         printf("Please select an origin city\n");
         printf("Enter a number associated with one of the cities below:\n");
-        for (int i = 0; i < sizeof(cities) / sizeof(cities[0]); i++) {
+        for (int i = 0; i < num_cities; i++) {
             printf("%-15s --- %2d\n", cities[i].name, i + 1);
         }
         printf("TO QUIT ENTER --  0\n");
@@ -132,10 +148,8 @@ int main() {
 
         printf("Please select a destination city\n");
         printf("Enter a number associated with one of the cities below:\n");
-        for (int i = 0; i < sizeof(cities) / sizeof(cities[0]); i++) {
-            if (i + 1 != origin_index) {
-                printf("%-15s --- %2d\n", cities[i].name, i + 1);
-            }
+        for (int i = 0; i < num_cities; i++) {
+            printf("%-15s --- %2d\n", cities[i].name, i + 1);
         }
         printf("$> ");
 
