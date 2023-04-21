@@ -14,6 +14,9 @@
 #ifndef MYDLL_H
 #define MYDLL_H
 
+#include <stdlib.h> // add this line to include malloc function
+#include <stdio.h>
+
 // Create a node data structure to store data within
 // our DLL. In our case, we will stores 'integers'
 typedef struct node {
